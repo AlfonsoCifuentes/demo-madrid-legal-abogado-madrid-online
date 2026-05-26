@@ -119,9 +119,10 @@ nav{
 
 .hero-right{
   background:var(--cream);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  display:flex;flex-direction:column;justify-content:center;align-items:stretch;
   padding:5rem 3rem;
   position:relative;
+  gap:1.5rem;
 }
 .hero-right::before{
   content:'';position:absolute;top:0;left:0;width:4px;height:100%;
@@ -130,7 +131,40 @@ nav{
 }
 .stats-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:2rem;
-  max-width:380px;width:100%;
+  max-width:none;width:100%;
+}
+
+.hero-photo-panel{
+  position:relative;
+  min-height:320px;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid var(--border);
+  box-shadow:0 22px 60px rgba(28,43,74,0.14);
+}
+
+.hero-photo-panel::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(28,43,74,0.05) 0%, rgba(28,43,74,0.18) 46%, rgba(28,43,74,0.72) 100%);
+}
+
+.hero-photo-panel img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+}
+
+.hero-photo-copy{
+  position:absolute;left:24px;right:24px;bottom:24px;z-index:1;
+  padding:1rem 1.1rem;border-radius:18px;
+  background:rgba(28,43,74,0.62);border:1px solid rgba(255,255,255,0.14);
+  backdrop-filter:blur(12px);
+}
+
+.hero-photo-copy strong{
+  display:block;font-family:'Merriweather',serif;font-size:1rem;color:#fff;margin-bottom:0.4rem;line-height:1.35;
+}
+
+.hero-photo-copy span{
+  display:block;color:rgba(255,255,255,0.78);font-size:0.88rem;line-height:1.6;
 }
 .stat-box{
   background:#fff;border:1px solid var(--border);
@@ -156,9 +190,10 @@ nav{
 @media(max-width:768px){
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-left{padding:3rem 1.5rem 3rem;text-align:center}
+  .hero-right{order:-1;padding:2rem 1.5rem 1rem}
   .hero-btns{justify-content:center}
   .hero-phone{justify-content:center}
-  .hero-right{padding:3rem 1.5rem}
+  .hero-photo-panel{min-height:260px}
   .stats-grid{max-width:100%}
   .hero-quote{max-width:100%}
 }
@@ -353,6 +388,13 @@ footer{
   </div>
 
   <div class="hero-right">
+    <div class="hero-photo-panel">
+      <img src="./hero-photo.jpg" alt="Interior contemporáneo de despacho jurídico con tono ejecutivo" loading="eager" />
+      <div class="hero-photo-copy">
+        <strong>Un hero con imagen editorial clara, no solo métricas flotando sobre vacío.</strong>
+        <span>La capa visual ahora comunica despacho, contexto y sofisticación jurídica desde el primer vistazo.</span>
+      </div>
+    </div>
     <div class="stats-grid">
       <div class="stat-box">
         <div class="stat-num">+20</div>
